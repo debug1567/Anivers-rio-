@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aniversário 🎉</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(180deg,#89c9ff,#ff9ed6);
+}
+
+.card{
+width:90%;
+max-width:360px;
+background:rgba(255,255,255,0.35);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:25px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+color:white;
+margin-bottom:15px;
+}
+
+.info{
+color:white;
+line-height:1.6;
+}
+
+input{
+width:100%;
+padding:15px;
+border-radius:15px;
+border:none;
+margin-top:20px;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:20px;
+font-size:16px;
+color:white;
+background:linear-gradient(90deg,#ff6ec7,#6ec6ff);
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+#msg{
+margin-top:10px;
+color:white;
+font-weight:bold;
+}
+
+.maps{
+display:inline-block;
+margin-top:10px;
+color:white;
+text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎉 Aniversário 🎉</h1>
+
+<div class="info">
+
+💙 Tema: Stitch & Angel 💖<br><br>
+
+📅 23/03<br>
+⏰ 19:00<br><br>
+
+📍 Avenida Paracatu 684<br>
+Quintas Avenidas
+
+</div>
+
+<a class="maps"
+href="https://maps.app.goo.gl/6NsSJA2226r7ppW37"
+target="_blank">
+
+Abrir no Google Maps 📍
+
+</a>
+
+<form id="form">
+
+<input id="nome" type="text" placeholder="Digite seu nome" required>
+
+<button type="submit">
+
+Confirmar Presença 💖
+
+</button>
+
+</form>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+document.getElementById("form").addEventListener("submit", function(e){
+
+e.preventDefault()
+
+let nome = document.getElementById("nome").value
+
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSd311TxmgeKOFIeGGZpnkVows7LvbQYRprG3g_4DEYo7b0A8Q/formResponse",{
+method:"POST",
+mode:"no-cors",
+body:new URLSearchParams({
+"entry.2005620554": nome
+})
+})
+
+document.getElementById("msg").innerText="Presença confirmada 🎉"
+
+document.getElementById("nome").value=""
+
+})
+
+</script>
+
+</body>
+</html>
